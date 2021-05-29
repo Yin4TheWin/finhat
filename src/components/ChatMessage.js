@@ -5,6 +5,7 @@ import {
 
 function ChatMessage(props){
     let currentdate = new Date(); 
+    console.log(currentdate)
     let datetime = (currentdate.getMonth()+1) + "/"
                 + currentdate.getDate()  + "/" 
                 + currentdate.getFullYear() + " @ "  
