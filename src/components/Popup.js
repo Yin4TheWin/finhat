@@ -56,13 +56,14 @@ export default function Popup(props){
                                     db.collection("users").doc(userCredential.user.uid).get().then((doc) => {
                                         if (doc.exists) {
                                             props.setUser(doc.data().username)
+                                            props.setUID(userCredential.user.uid)
                                         } else {
                                             props.setUser("No Username")
                                         }
+                                        props.handleClose()
                                     }).catch((error) => {
                                         console.log("Error getting document:", error);
                                     });
-                                    props.handleClose()
                                 })
                                 .catch((error) => {
                                     alert(error)
@@ -85,13 +86,14 @@ export default function Popup(props){
                     db.collection("users").doc(userCredential.user.uid).get().then((doc) => {
                         if (doc.exists) {
                             props.setUser(doc.data().username)
+                            props.setUID(userCredential.user.uid)
                         } else {
                             props.setUser("No Username")
                         }
+                        props.handleClose()
                     }).catch((error) => {
                         console.log("Error getting document:", error);
                     });
-                    props.handleClose()
                 })
                 .catch((error) => {
                     alert(error)
