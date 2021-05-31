@@ -24,11 +24,14 @@ function ChatScreen(props){
     const [uid, setUID] = React.useState(firebase.auth().currentUser?firebase.auth().currentUser.uid:uniqid())
     const [mods, setMods] = React.useState([])
     const db = firebase.firestore()
-    const handleClose = () => {
-    if(firebase.auth().currentUser||(username.length>0&&/^[a-z\d\-_\s]+$/i.test(username)&&!username.toLowerCase().replaceAll("0","o").replaceAll("3","e").replaceAll(" ","").includes('moderator')))
-        setOpen(false);
-    else
-        alert("Name can only contain alphanumeric characters, spaces and dashes, and cannot contain the word \"moderator\"!")
+    const handleClose = (event, reason) => {
+        console.log(event)
+        if (reason !== 'backdropClick') {
+            if(firebase.auth().currentUser||(username.length>0&&/^[a-z\d\-_\s]+$/i.test(username)&&!username.toLowerCase().replaceAll("0","o").replaceAll("3","e").replaceAll(" ","").includes('moderator')))
+                setOpen(false);
+            else
+                alert("Name can only contain alphanumeric characters, spaces and dashes, and cannot contain the word \"moderator\"!")
+        }
     };
     useEffect(()=>{
         if(props.signedIn){
@@ -83,7 +86,7 @@ function ChatScreen(props){
                 }}/>
             </ChatContainer>
           </MainContainer>
-          <Popup diagTitle="Welcome!" diagText="Enter a username to start chatting anonymously, or sign in if you are a chat admin."
+          <Popup formState={0} diagTitle="Welcome!" diagText="Enter a username to start chatting anonymously, or sign in if you are a chat admin."
            open={open} handleClose={handleClose} setUser={setUsername}
            setUID={setUID}/>
         </div>

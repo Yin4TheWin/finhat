@@ -12,6 +12,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import React, { useEffect } from "react";
 import LoadingScreen from './components/LoadingScreen'
+import Home from './components/Home'
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcG30CshhgN7Ha8AGrkRsc4yDDgDVgQTM",
@@ -52,6 +53,9 @@ export default function App() {
       <Switch>
         <Route path="/chat/:topicID">
           <Chat signedIn={signedIn} exists={exists} setExists={setExists} roomName={roomName} setRoomName={setRoomName} userID={userID}/>
+        </Route>
+        <Route path="/">
+          <Home/>
         </Route>
       </Switch>
     </Router>
