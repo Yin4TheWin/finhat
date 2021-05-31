@@ -7,6 +7,7 @@ import { AppBar } from '@material-ui/core';
 import Popup from './Popup'
 import firebase from "firebase/app";
 import "firebase/auth";
+import { useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
     toolbar: {
@@ -26,6 +27,7 @@ export default function Navbar(){
     const [renderPopup, setRender] = React.useState(false)
     const [loginText, setLoginText] = React.useState("Login")
     const classes = useStyles()
+    const history = useHistory();
     React.useEffect(()=>{
         firebase.auth().onAuthStateChanged((user) => {
           if (user) {
@@ -59,11 +61,16 @@ export default function Navbar(){
             href="/#contact"
             className={classes.toolbarLink}
             > Contact </Link>
-            <Button variant="outlined" size="small" onClick={()=>{setRender(true)}}>
+            <Button variant="outlined" size="small" onClick={()=>{
+                if(loginText==="Login")
+                    setRender(true)
+                else
+                    history.push('/dashboard')
+            }}>
                 {loginText}
             </Button>
-            <Popup formState={1} hide diagTitle="Welcome back!" diagText="Enter your email and password to log in. If you do not have an account please register first."
-           open={renderPopup} handleClose={()=>{setRender(false)}}/>
+            <Popup formState={1} hide diagTitle="Welcome back! 👋" diagText="Enter your email and password to log in. If you do not have an account please register first."
+           open={renderPopup} onLogin={()=>{history.push('/dashboard')}} handleClose={()=>{setRender(false)}}/>
         </Toolbar>
         </AppBar>
     </React.Fragment>)

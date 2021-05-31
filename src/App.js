@@ -13,6 +13,7 @@ import "firebase/firestore";
 import React, { useEffect } from "react";
 import LoadingScreen from './components/LoadingScreen'
 import Home from './components/Home'
+import Dashboard from './components/Dashboard'
 
 const firebaseConfig = {
   apiKey: "AIzaSyAcG30CshhgN7Ha8AGrkRsc4yDDgDVgQTM",
@@ -51,8 +52,14 @@ export default function App() {
   return (
     <Router>
       <Switch>
+        <Route path="/dashboard">
+          <Dashboard signedIn={signedIn}/>
+        </Route>
         <Route path="/chat/:topicID">
           <Chat signedIn={signedIn} exists={exists} setExists={setExists} roomName={roomName} setRoomName={setRoomName} userID={userID}/>
+        </Route>
+        <Route path="/chat">
+          <NotFound/>
         </Route>
         <Route path="/">
           <Home/>
