@@ -114,6 +114,7 @@ export default function Popup(props) {
               {!props.hide ? (
                 <Button
                   onClick={() => {
+                setUsername(email);
                     setFormState(0);
                   }}
                   color="primary"
