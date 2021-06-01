@@ -47,20 +47,6 @@ export default function Navbar(){
             href="/"
             className={classes.toolbarLink}
             > Home </Link>
-            <Link
-            color="inherit"
-            noWrap
-            variant="body2"
-            href="/#about"
-            className={classes.toolbarLink}
-            > About </Link>
-            <Link
-            color="inherit"
-            noWrap
-            variant="body2"
-            href="/#contact"
-            className={classes.toolbarLink}
-            > Contact </Link>
             <Button variant="outlined" size="small" onClick={()=>{
                 if(loginText==="Login")
                     setRender(true)

@@ -122,9 +122,6 @@ export default function Popup(props) {
               ) : (
                 <Button
                   onClick={() => {
-                    setEmail("")
-                    setPassword("")
-                    setUsername("")
                     setFormState(2);
                   }}
                   color="primary"

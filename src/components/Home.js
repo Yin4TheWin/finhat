@@ -3,15 +3,11 @@ import Navbar from './Navbar'
 import Hero from '../images/hero.jpg'
 import Pulse from 'react-reveal/Pulse';
 import GalleryEntry from './GalleryEntry'
-import Accordion from '@material-ui/core/Accordion';
-import AccordionSummary from '@material-ui/core/AccordionSummary';
-import AccordionDetails from '@material-ui/core/AccordionDetails';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Paper, makeStyles, Typography, Grid, Avatar } from '@material-ui/core';
-import Cutscene from '../images/hero.jpg'
-import Title from '../images/hero.jpg'
-import Fight from '../images/hero.jpg'
 import Logo from '../images/twinhat.png'
+import RegisterStep from '../images/RegisterStep.png'
+import DashboardStep from '../images/DashboardStep.png'
+import VisitStep from '../images/VisitStep.png'
 
 const useStyles = makeStyles((theme)=>({
     root: {
@@ -48,7 +44,7 @@ const useStyles = makeStyles((theme)=>({
           width: '88%',
       },
       whiteText:{
-        color: "#d1cdca"
+        color: "#ededed"
       }
 }))
 export default function Homepage(){
@@ -60,15 +56,30 @@ export default function Homepage(){
             <div style={{width: '50%', textAlign:'center'}}>
             <Typography variant="h3" className={classes.whiteText}>The Two Minute Chat</Typography>
             <br></br>
-              <Typography variant="h6" className={classes.whiteText}>Set up a live customer service chat for your company (or an anonymous chat for your friends!) in under two minutes, for free.</Typography>
+              <Typography variant="h6" className={classes.whiteText}>Set up a live customer service chat for your company (or an anonymous chat with your friends) in under two minutes, for free.</Typography>
             </div>
         </Paper>
         <Paper className={classes.aboutPaper}>
+          <br/>
+          <Typography variant="h3" id="games" style={{textAlign:"center", paddingTop: "2vh", paddingBottom: "2vh"}}>Setup Instructions</Typography>
+      <p className={classes.aboutText}>Setting up a chat room is super simple, and can be done in less than two minutes. Simply follow the instructions below.</p>
+      <br/>
+      <Grid container spacing={3} style={{margin:'auto', width:'98%'}}>
+          <Grid item xs={12} sm={4}>
+            <GalleryEntry image={RegisterStep} title="1. Register" caption="Navigate to the top right corner of your screen and click the Login button. Then, at the bottom of the form that appears, click Register. Register for an account with a unique email, as well as any username and a secure password."/>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <GalleryEntry image={DashboardStep} title="2. Pick a name, then create" caption="After successfully registering, you will be taken to your dashboard. Here, you can view and edit your previously created chatrooms. To create a new one, enter a creative name into the Chat Name box, then press the Create button."/>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <GalleryEntry image={VisitStep} title="3. View your chatroom!" caption="That's it! After creation, the link to your new chatroom will be displayed on screen. If you are signed into this website while visiting your chatroom, your name will be bolded and say MODERATOR. Moderation options and the ability to invite more moderators will come in the future."/>
+          </Grid>
+      </Grid>
+      <br/><br/>
             <Pulse>
-                <Typography variant="h3" id="about" style={{textAlign:"center", paddingTop: "2vh", paddingBottom: "2vh"}}>Welcome to NNMG Studios</Typography>
+            <Typography variant="h3" id="about" style={{textAlign:"center", paddingTop: "2vh", paddingBottom: "2vh"}}>Featured Companies</Typography>
+            <Typography variant="h6" style={{textAlign:"center", paddingBottom: "2vh"}}>A few companies, groups, or products who use TwinHat for their customer service solution.</Typography>
             </Pulse>
-            <p className={classes.aboutText}>Hello</p>
-            <Typography variant="h5" fontWeight="fontWeightBold" m={1} style={{paddingTop: "2vh", paddingLeft: "2vw"}}>Meet the Team</Typography>
             <br/>
         <Grid container spacing={3}>
             <Grid item xs={12} sm={6}>
@@ -76,97 +87,26 @@ export default function Homepage(){
                 <br></br>
                 <Avatar>Y</Avatar>
                 <br></br>
-                <Typography variant="h6">Franklin "YinFTW" Yin</Typography>
+                <Typography variant="h6">You could be featured here!</Typography>
                 <br></br>
-                <Typography style={{width:'90%', margin:'auto'}}>Hi everyone! My name's Franklin (or Yin4TheWin), and I'm the developer for NNMG. I do all the code stuff for the game, and I made this site as well! If you want to see this site's code you can check it out <a href="https://github.com/Yin4TheWin/nnmg-site">here</a> on Github. I'm still pretty new to React, so feedback would be appreciated: hit me up at yin4thewin@gmail.com.<br/><br/>Other reasons to hit me up include questions about the game, loneliness, boredom or literally anything. We're also always open for new programmers, writers, voice actors or artists, so let me know about that too!</Typography>
+                <Typography style={{width:'90%', margin:'auto'}}>
+                  Want your company or product to be featured here, along with an icon and description of your choice? Send me an email at yin4thewin@gmail.com to learn more and get it featured for free!
+                </Typography>
                 <br></br>
             </Paper>
             </Grid>
             <Grid item xs={12} sm={6}>
             <Paper className={classes.paper}>
                 <br></br>
-                <Avatar>D</Avatar>
+                <Avatar>Y</Avatar>
                 <br></br>
-                <Typography variant="h6">Duke of Marlins (Name anon)</Typography>
+                <Typography variant="h6">You could be featured here!</Typography>
                 <br></br>
-                <Typography style={{width:'90%', margin:'auto'}}>Duke of Marlins is your friendly fish for writing. The Duke of Marlins holds the following credits, as their subjects will testify under the threat of becoming undone: Saving the world multiple times, predicting the fate of the universe, being a really good writer, and coming up with the pre-production title of this game: MarlinQuest. If there are any queries or criticisms of the game, please ask someone else. They are solely responsible for 5% of the plot, and not actually programming. The Duke will update accordingly when they hear about it.<br/><br/></Typography>
+                <Typography style={{width:'90%', margin:'auto'}}>Want your company or product to be featured here, along with an icon and description of your choice? Send me an email at yin4thewin@gmail.com to learn more and get it featured for free!</Typography>
                 <br></br>
             </Paper>
             </Grid>
       </Grid>
-      <br/>
-      <Typography variant="h3" id="games" style={{textAlign:"center", paddingTop: "2vh", paddingBottom: "2vh"}}>Our Games</Typography>
-      <p className={classes.aboutText}>Hello</p>
-      <br/>
-      <Grid container spacing={3} style={{margin:'auto', width:'98%'}}>
-          <Grid item xs={12} sm={4}>
-            <GalleryEntry image={Title} title="Main Menu" caption="A look at the game's current menu scene (it's animated!). The crystal is a central element to Quixotic Quest: more will be revealed later."/>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <GalleryEntry image={Hero} title="A Tree" caption="The above is an in-game screenshot taken because I thought the sun looked really nice shining between the trees. All credit for the environment assets go to the Fantasy Adventure Environment asset on the Unity store."/>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <GalleryEntry image={Fight} title="Demo: Battle" caption="The linked video (click this card to view!) demonstrates the battle system that currently exists in the game. It also demoes a camera that moves around mid-fight, because I think it looks cool." click='https://youtu.be/mspSiIVixHo'/>
-          </Grid><Grid item xs={12} sm={4}>
-            <GalleryEntry image={Cutscene} title="Demo: Cutscenes" caption="The initial cutscene system was a click-to-continue storybook-like experience. The current system plays more like a movie, though extended animated scenes are still a challenge. Click this card to see a demo of it." click='https://youtu.be/N90vSCB2ujo'/>
-          </Grid>
-      </Grid>
-      <Typography variant="h3" id="contact" style={{textAlign:"center", paddingTop: "8vh", paddingBottom: "2vh"}}>Contact</Typography>
-      <br/>
-      <Typography className={classes.aboutText}>Whether you have questions about the development process or feedback about the game, we're here to fulfill any NNMG-related request you might have. Click to expand the accordions below and see our various modes of contact.</Typography>
-      <br/>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-        <Typography>Game Updates and General Support</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            Join our Discord! Although the Devblog will cover major updates, day to day changes, down to the exact commits that are being pushed to Github, will be posted on our Discord server.
-            If you have questions about the game or its dev process, this is also where I'll likely respond the quickest. Here's the link to join: <a href="https://discord.gg/RUZNp3r">https://discord.gg/RUZNp3r</a>.
-            Hope to see you there, we'd be happy to have you!
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <br/>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-        <Typography>Applications for Dev Team</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-            We're a small crew, and always looking for new people to join our team. If you have the time and are willing to apply, please send me an email at yin4thewin@gmail.com. I'd be honored to know that you think our projects are worth your time! We're currently looking for:<br/><br/>
-            -Programmer (Unity)<br/>
-            -Programmer (Web)<br/>
-            -Writer<br/>
-            -Artist<br/><br/>
-            Unfortunately we are unable to offer financial compensation at this time. Additionally I cannot guarantee that we will generate any revenue, much less profit. However, if you've ever wanted to make a video game, want a cool project for your resume, or just want to hang out with a chill team, I encourage you to contact me! And if we ever do make money, know that you will definitely be compensated accordingly.
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
-      <br/>
-      <Accordion>
-        <AccordionSummary
-          expandIcon={<ExpandMoreIcon />}
-          aria-controls="panel1a-content"
-          id="panel1a-header"
-        >
-        <Typography>Applications for Beta Testing</Typography>
-        </AccordionSummary>
-        <AccordionDetails>
-          <Typography>
-              QA/Beta Testers are an indispensable part of any good dev team. They catch bugs, point out loopholes and generally offer the feedback necessary to make a great game a reality. I haven't worked out the specifics yet, but I'm currently thinking of implementing a "drops" system where users active on the devblog/Discord can get access to early release builds. A user's activity can be measured by them creating an account on this site that is also linked to their Discord account (hence the log in button in the navbar).
-              While logged in, views and comments on the Devblog will contribute to that user's drop chances. I'll update this later when I work it all out, but in the meantime feel free to join the <a href="https://discord.gg/RUZNp3r">Discord</a> to stay tuned!
-          </Typography>
-        </AccordionDetails>
-      </Accordion>
       <br/><br/><br/>
         </Paper>
     </React.Fragment>)

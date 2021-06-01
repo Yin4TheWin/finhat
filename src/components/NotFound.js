@@ -54,7 +54,7 @@ export default function NotFound(){
       <br></br>
       <Typography>
           Sorry! We could not find a chat room with that address. Please ensure you typed the address correctly. If you would like 
-          to create a chatroom at this address, please <Link href="/signin">
+          to create a chatroom at this address, please <Link href="/dashboard">
               {"click here to be taken to the room creation page."}
             </Link>
       </Typography>
