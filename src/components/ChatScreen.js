@@ -5,7 +5,8 @@ import {
     ConversationHeader,
     MessageInput,
   } from "@chatscope/chat-ui-kit-react";
-import testAvatar from '../logo.svg'
+import testAvatar from '../images/profile.png'
+import modAvatar from '../images/mod.svg'
 import ChatMessage from './ChatMessage'
 import React, { useEffect } from "react";
 import firebase from "firebase/app";
@@ -14,6 +15,8 @@ import "firebase/firestore";
 import Popup from './Popup'
 import uniqid from 'uniqid'
 import { Helmet } from 'react-helmet'
+import useSound from 'use-sound';
+import Ring from '../sounds/ringtone.ogg'
 
 let unsubscribe
 
@@ -24,6 +27,9 @@ function ChatScreen(props){
     const [username, setUsername] = React.useState("")
     const [uid, setUID] = React.useState(firebase.auth().currentUser?firebase.auth().currentUser.uid:uniqid())
     const [mods, setMods] = React.useState([])
+    const [focus, setFocus] = React.useState(true)
+    const [missed, setMissed] = React.useState(0)
+    const [play] = useSound(Ring)
     const db = firebase.firestore()
     const handleClose = (event, reason) => {
         console.log(event)
@@ -33,6 +39,18 @@ function ChatScreen(props){
             else
                 alert("Name can only contain alphanumeric characters, spaces and dashes, and cannot contain the word \"moderator\"!")
         }
+    };
+    // User has switched back to the tab
+    const onFocus = () => {
+        setFocus(true)
+        setMissed(0)
+        console.log('Tab is in focus');
+    };
+    
+    // User has switched away from the tab (AKA tab is hidden)
+    const onBlur = () => {
+        setFocus(false)
+        console.log('Tab is blurred');
     };
     useEffect(()=>{
         if(props.signedIn){
@@ -52,19 +70,31 @@ function ChatScreen(props){
         const docRef = db.collection("chatrooms").doc(props.topicID);
         unsubscribe=docRef.onSnapshot((doc) => {
             console.log("Set messages.")
+            if(!focus&&messages.length!==0&&messages.length!==doc.data().messages.length){
+                setMissed(missed+1)
+                play()
+            }
             setMessages(doc.data().messages.map((element)=>{
             return(<ChatMessage date={element.date} 
-                message={element.message} sender={element.sender} avatar={testAvatar} 
+                message={element.message} sender={element.sender} avatar={element.mod?modAvatar:testAvatar} 
                 direction={uid===element.uid?"outgoing":"incoming"} mod={element.mod}/>)
             }))
             setMods(doc.data().moderators)
         });
-    },[db, uid, props.topicID])
-
+    },[db, uid, props.topicID, focus, play, messages.length, missed])
+    useEffect(() => {
+        window.addEventListener('focus', onFocus);
+        window.addEventListener('blur', onBlur);
+        // Specify how to clean up after this effect:
+        return () => {
+          window.removeEventListener('focus', onFocus);
+          window.removeEventListener('blur', onBlur);
+        };
+      });
       return (
         <div style={{ position: "relative", height: "100vh" }}>
         <Helmet>
-            <title>{ props.name+" Live Chat" }</title>
+            <title>{ missed===0?props.name+" Live Chat":props.name+" Live Chat ("+missed+")" }</title>
         </Helmet>
           <MainContainer>
             <ChatContainer>
