@@ -7,13 +7,14 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Disc from '../images/loading.gif'
+import { Helmet } from 'react-helmet'
 
 function Copyright() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://material-ui.com/">
-          ThinHat
+          TwinHat
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -36,6 +37,9 @@ const useStyles = makeStyles((theme) => ({
 export default function LoadingScreen(){
     const classes = useStyles();
     return(<Container component="main" maxWidth="xs">
+      <Helmet>
+        <title>{"Loading..."}</title>
+      </Helmet>
     <CssBaseline />
     <div className={classes.paper}>
       <Avatar className={classes.avatar} src={Disc}>

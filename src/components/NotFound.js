@@ -7,13 +7,14 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import Disc from '../logo.svg'
+import { Helmet } from 'react-helmet'
 
 function Copyright() {
     return (
       <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://material-ui.com/">
-          ThinHat
+          TwinHat
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -43,6 +44,9 @@ const useStyles = makeStyles((theme) => ({
 export default function NotFound(){
     const classes = useStyles();
     return(<Container component="main" maxWidth="xs">
+      <Helmet>
+        <title>{"Chat room not found"}</title>
+      </Helmet>
     <CssBaseline />
     <div className={classes.paper}>
       <Avatar className={classes.avatar} src={Disc}>

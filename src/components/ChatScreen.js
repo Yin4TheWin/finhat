@@ -13,6 +13,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import Popup from './Popup'
 import uniqid from 'uniqid'
+import { Helmet } from 'react-helmet'
 
 let unsubscribe
 
@@ -62,6 +63,9 @@ function ChatScreen(props){
 
       return (
         <div style={{ position: "relative", height: "100vh" }}>
+        <Helmet>
+            <title>{ props.name+" Live Chat" }</title>
+        </Helmet>
           <MainContainer>
             <ChatContainer>
             <ConversationHeader>
